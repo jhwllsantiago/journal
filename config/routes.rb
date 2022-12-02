@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :categories
-  # root "categories#index"
+  root "pages#home"
+  get "about", to: "pages#about"
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
