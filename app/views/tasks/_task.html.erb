@@ -1,0 +1,9 @@
+<div class="task-<%= task.id %> container"
+    style="border: 1px solid black; padding: 1em; margin: 1em;">
+  <span>Added <%= time_ago_in_words(task.created_at) %> ago</span>
+  <div class="button-group float-end">
+    <%= button_to "Delete", [category, task], class:"btn btn-danger", method: :delete %>
+  </div>
+  <hr />
+  <%= task.body %>
+</div>

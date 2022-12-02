@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1
   def show
+    @tasks = @category.tasks.order(created_at: :desc)
   end
 
   # GET /categories/new
