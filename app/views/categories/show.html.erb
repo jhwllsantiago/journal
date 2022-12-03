@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @category %>
-<%= render 'tasks/form', category: @category %>
+<%= render 'tasks/form', category: @category, task: @category.tasks.build, button_label: "Add" %>
 <% @tasks.each do |task| %>
   <%= render 'tasks/task', category: @category, task: task %>
 <% end %>

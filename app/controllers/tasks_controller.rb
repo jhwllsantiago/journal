@@ -19,6 +19,18 @@ class TasksController < ApplicationController
     redirect_to category_path(@category)
   end
 
+  def update
+    @task = @category.tasks.find(params[:id])
+
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to category_url(@category), notice: "Task updated." }
+      else
+        format.html { redirect_to category_url(@category), alert: "Error in updating task." }
+      end
+    end
+  end
+
   private
 
   def set_category

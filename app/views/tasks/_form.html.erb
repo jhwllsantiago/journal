@@ -1,6 +1,6 @@
-<%= form_with(model: [category, category.tasks.build]) do |f| %>
+<%= form_with(model: [category, task]) do |f| %>
   <div class="form-control">
     <%= f.rich_text_area :body %>
-    <%= f.submit "Add", class: "btn btn-primary mt-1" %>
+    <%= f.submit button_label, class: "btn btn-primary mt-1" %>
   </div>
 <% end %>

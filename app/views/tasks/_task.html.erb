@@ -1,9 +1,25 @@
-<div class="task-<%= task.id %> container"
+<div id="task-<%= task.id %>" class="container"
     style="border: 1px solid black; padding: 1em; margin: 1em;">
-  <span>Added <%= time_ago_in_words(task.created_at) %> ago</span>
-  <div class="button-group float-end">
+  <% if (task.updated_at - task.created_at) > 1 %>
+    <span>Edited <%= time_ago_in_words(task.updated_at) %> ago</span>
+  <% else %>
+    <span>Added <%= time_ago_in_words(task.created_at) %> ago</span>
+  <% end %>
+  <div class="btn-group float-end">
+    <%= link_to 'Edit', nil, remote: true, class:"btn btn-warning",
+    data: {
+      controller: "tasks",
+      action: "tasks#toggleEditForm",
+      tasks_form_param: "edit-form-#{task.id}",
+      tasks_body_param: "task-body-#{task.id}"
+    } %>
     <%= button_to "Delete", [category, task], class:"btn btn-danger", method: :delete %>
   </div>
+  <div id="edit-form-<%= task.id %>" class="d-none">
+    <%= render 'tasks/form', category: @category, task: task, button_label: "Update" %>
+  </div>
   <hr />
-  <%= task.body %>
+  <div id="task-body-<%= task.id %>">
+    <%= task.body %>
+  </div>
 </div>
