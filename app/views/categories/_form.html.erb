@@ -2,12 +2,9 @@
   <% if category.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-        <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+      <% category.errors.each do |error| %>
+        <p class="alert alert-danger"><%= error.full_message %></p>
+      <% end %>
     </div>
   <% end %>
 

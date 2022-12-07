@@ -1,14 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+<div class="container-xl">
+  <h2 class="text-center mt-1">Categories</h2>
+  <div id="categories" class="cards-index mt-4">
+    <% @categories.each do |category| %>
+      <%= link_to render(category), category, class: "link-category-div" %>
+    <% end %>
+  </div>
+  <div class="mt-4 mx-auto w-25">
+    <%= link_to "Add Category", new_category_path, class: "btn btn-dark w-100" %>
+  </div>
 </div>
 
-<%= link_to "New category", new_category_path %>
