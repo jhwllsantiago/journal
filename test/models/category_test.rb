@@ -1,34 +1,40 @@
 require "test_helper"
 
 class CategoryTest < ActiveSupport::TestCase
+  def setup
+    @category = categories(:one)
+    @new_category = Category.new(name: "name", details: "details")
+    @new_category.user = users(:one)
+  end
   
-  test "should not save category" do
-    category = Category.new
-    assert_not category.save, "category saved without name and details"
-    category.details = "details"
-    assert_not category.save, "category saved without name"
+  test "should save valid category" do
+    assert @new_category.save, "valid category not saved"
+    @category.details = nil
+    assert @new_category.save, "valid category not saved without details"
   end
 
-  test "should save category" do
-    category = Category.new
-    category.name = "name"
-    assert category.save, "category not saved"
-    category.details = "details"
-    assert category.save, "category not saved"
+  test "should not save invalid category with no name" do
+    @new_category.name = nil
+    assert_not @new_category.save, "invalid category saved without name"
+    assert_not_empty @new_category.errors[:name], "no validation error for name"
+  end
+
+  test "should not save invalid category with no user" do
+    @new_category.user = nil
+    assert_not @new_category.save, "invalid category saved without user"
+    assert_not_empty @new_category.errors[:user], "no validation error for user"
   end
 
   test "should update category" do
-    category = Category.new
-    category.name = "name"
-    category.details = "details"
-    category.save
-    category.update(name: "asdf")
-    assert Category.where(name: "asdf"), "category not updated"
+    @category.update(name: "update name", details: "update details")
+    assert Category.where(name: "update name", details: "update details", id: @category.id).exists?, "category not updated"
   end
 
   test "should delete category" do
-    category = Category.new
-    category.name = "name"
-    assert category.destroy, "category not deleted"
+    assert_difference("Category.count", -1, "category count did not decrease by 1") do
+      @category.destroy
+    end
+
+    assert_not Category.exists?(@category.id),  "category not deleted"
   end
 end

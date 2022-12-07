@@ -2,7 +2,23 @@ require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in users(:one)
     @category = categories(:one)
+  end
+
+  test "should redirect to sign in" do
+    sign_out users(:one)
+    get categories_url
+    assert_redirected_to user_session_url
+
+    get new_category_url
+    assert_redirected_to user_session_url
+    
+    get category_url(@category)
+    assert_redirected_to user_session_url
+    
+    get edit_category_url(@category)
+    assert_redirected_to user_session_url
   end
 
   test "should get index" do
