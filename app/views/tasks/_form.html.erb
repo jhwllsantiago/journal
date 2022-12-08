@@ -1,6 +1,14 @@
 <%= form_with(model: [category, task]) do |f| %>
-  <div class="form-control">
+  <div class="form-control w-50">
+
+    <%= f.text_field :title %>
+
+    <%= f.label :body, style: "display: block" %>
     <%= f.rich_text_area :body %>
+
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline, value: Time.now.strftime("%Y-%m-%d") %>
+
     <%= f.submit button_label, class: "btn btn-primary mt-1" %>
   </div>
 <% end %>
