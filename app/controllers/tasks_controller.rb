@@ -7,16 +7,16 @@ class TasksController < ApplicationController
     @task.user = current_user
 
     if @task.save
-      redirect_to category_path(@category), notice: 'Task has been created'
+      redirect_to category_path(@category), notice: "#{@task.title.capitalize} has been added to #{@category.name.upcase}."
     else
-      redirect_to category_path(@category), alert: 'Task has not been created'
+      redirect_to category_path(@category), alert: "An error occured. #{@task.title.capitalize} was not added."
     end
   end
 
   def destroy
     @task = @category.tasks.find(params[:id])
     @task.destroy
-    redirect_to category_path(@category)
+    redirect_to category_path(@category), alert: "#{@task.title.capitalize} has been deleted."
   end
 
   def update
@@ -24,9 +24,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to category_url(@category), notice: "Task updated." }
+        format.html { redirect_to category_url(@category), notice: "#{@task.title.capitalize} has been updated." }
       else
-        format.html { redirect_to category_url(@category), alert: "Error in updating task." }
+        format.html { redirect_to category_url(@category), alert: "An error occured. #{@task.title.capitalize} was not updated." }
       end
     end
   end

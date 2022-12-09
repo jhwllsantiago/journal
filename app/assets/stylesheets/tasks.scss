@@ -21,3 +21,8 @@
   z-index: 9;
   cursor: default;
 }
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

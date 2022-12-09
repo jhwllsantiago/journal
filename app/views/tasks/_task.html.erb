@@ -6,7 +6,11 @@
       <% else %>
         <span class="badge text-bg-success"><%= deadline_to_words(task.deadline) %></span>
       <% end %>
-      <h3 class="mt-2"><%= task.title.capitalize %> </h3>
+      <% if task.title.strip == "" or task.title == "Untitled" %>
+        <h3 class="mt-2 fc-gray">Untitled</h3>
+      <% else %>
+        <h3 class="mt-2"><%= task.title.capitalize %></h3>
+      <% end %>
     </div>
     <div class="d-flex justify-content-between align-items-start">
       <%= link_to 'Edit', nil, remote: true, class:"btn btn-outline-success fs-7",
