@@ -1,12 +1,11 @@
 <%= form_with(model: category) do |form| %>
-  <div>
-    <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, autofocus: true, placeholder: "Weekend Plans", class: "form-control mb-3" %>
+  <div class="form-floating mb-3">
+    <%= form.text_field :name, required: true ,autofocus: true, placeholder: "Weekend Plans", class: "form-control" %>
+    <%= form.label :name %>
   </div>
 
   <div>
-    <%= form.label :details, class: "form-label" %>
-    <%= form.text_area :details, class: "form-control mb-3", rows: "10px" %>
+    <%= form.text_area :details, class: "form-control", rows: "6", placeholder: "Add some description here..." %>
   </div>
 
   <div class="d-grid mt-5">

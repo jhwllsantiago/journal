@@ -1,15 +1,15 @@
-<div class="container container-400 mt-auto mb-auto">
+<div class="container container-400 mt-5">
   <h2 class="mb-5 mt-3 text-center">Login to <span class=" fst-italic">Journally</span></h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email, class: "form-label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-3" %>
+    <div class="form-floating mb-3">
+      <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@example.com" %>
+      <%= f.label :email %>
     </div>
 
-    <div class="field">
-      <%= f.label :password, class: "form-label" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control mb-3" %>
+    <div class="form-floating mb-3">
+      <%= f.password_field :password, required: true, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
+      <%= f.label :password %>
     </div>
 
     <% if devise_mapping.rememberable? %>
@@ -23,6 +23,4 @@
       <%= f.submit "Submit", class: "btn btn-outline-success btn-block"%>
     </div>
   <% end %>
-
-  <%# render "devise/shared/links" %>
 </div>
