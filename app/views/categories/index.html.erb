@@ -1,12 +1,10 @@
-<div class="container-xl">
+<div class="container categories-index">
   <h2 class="text-center mt-1">Categories</h2>
-  <div id="categories" class="cards-index mt-4">
+  <div id="categories" class="grid mt-4">
     <% @categories.each do |category| %>
-      <%= link_to render(category), category, class: "link-category-div" %>
+      <%= link_to render(category), category, class: "card category-card" %>
     <% end %>
-  </div>
-  <div class="mt-4 mx-auto w-25">
-    <%= link_to "Add Category", new_category_path, class: "btn btn-dark w-100" %>
+    <%= link_to render("categories/newcard"), new_category_path, class: "card new-category-card" %>
   </div>
 </div>
 

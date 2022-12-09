@@ -1,25 +1,38 @@
-<div id="task-<%= task.id %>" class="container"
-    style="border: 1px solid black; padding: 1em; margin: 1em;">
-  <% if (task.updated_at - task.created_at) > 1 %>
-    <span>Edited <%= time_ago_in_words(task.updated_at) %> ago</span>
-  <% else %>
-    <span>Added <%= time_ago_in_words(task.created_at) %> ago</span>
-  <% end %>
-  <div class="btn-group float-end">
-    <%= link_to 'Edit', nil, remote: true, class:"btn btn-warning",
-    data: {
-      controller: "tasks",
-      action: "tasks#toggleEditForm",
-      tasks_form_param: "edit-form-#{task.id}",
-      tasks_body_param: "task-body-#{task.id}"
-    } %>
-    <%= button_to "Delete", [category, task], class:"btn btn-danger", method: :delete %>
+<div id="task-<%= task.id %>" class="card p-3 m-3">
+  <div class="d-flex justify-content-between">
+    <div>
+      <% if deadline_now? task.deadline %>
+        <span class="badge text-bg-danger"><%= deadline_to_words(task.deadline) %></span>
+      <% else %>
+        <span class="badge text-bg-success"><%= deadline_to_words(task.deadline) %></span>
+      <% end %>
+      <h3 class="mt-2"><%= task.title %> </h3>
+    </div>
+    <div class="d-flex justify-content-between task-btns">
+      <%= link_to 'Edit', nil, remote: true, class:"btn btn-outline-success fs-7",
+      data: {
+        controller: "tasks",
+        action: "tasks#toggleEditForm",
+        tasks_form_param: "edit-form-#{task.id}",
+        tasks_body_param: "task-body-#{task.id}"
+      } %>
+      <%= button_to "Delete", [category, task], class:"btn btn-outline-danger fs-7", method: :delete %>
+    </div>
   </div>
-  <div id="edit-form-<%= task.id %>" class="d-none">
-    <%= render 'tasks/form', category: @category, task: task, button_label: "Update" %>
-  </div>
-  <hr />
-  <div id="task-body-<%= task.id %>">
+
+  <div id="task-body-<%= task.id %>" class="card-body">
     <%= task.body %>
+  </div>
+
+  <p class="fs-7 fst-italic text-end me-3">
+    <% if (task.updated_at - task.created_at) > 1 %>
+      <span>edited <%= time_ago_in_words(task.updated_at) %> ago</span>
+    <% else %>
+      <span>added <%= time_ago_in_words(task.created_at) %> ago</span>
+    <% end %>
+  </p>
+  
+  <div id="edit-form-<%= task.id %>" class="d-none task-edit-form">
+    <%= render 'tasks/form', category: @category, task: task, button_label: "Update" %>
   </div>
 </div>
