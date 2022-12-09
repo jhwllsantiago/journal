@@ -1,11 +1,23 @@
-.stask-edit-form {
-  position: absolute;
+.task-form {
+  position: fixed;
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 10;
+  border-radius: 10px;
 }
 
-.task-btns {
-  gap: 10px;
-  height: 100%;
+.task-backdrop {
+  position: fixed;
+  background-color: black;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  cursor: default;
 }

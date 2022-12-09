@@ -6,17 +6,17 @@
       <% else %>
         <span class="badge text-bg-success"><%= deadline_to_words(task.deadline) %></span>
       <% end %>
-      <h3 class="mt-2"><%= task.title %> </h3>
+      <h3 class="mt-2"><%= task.title.capitalize %> </h3>
     </div>
-    <div class="d-flex justify-content-between task-btns">
+    <div class="d-flex justify-content-between align-items-start">
       <%= link_to 'Edit', nil, remote: true, class:"btn btn-outline-success fs-7",
       data: {
         controller: "tasks",
-        action: "tasks#toggleEditForm",
+        action: "tasks#showEditForm",
         tasks_form_param: "edit-form-#{task.id}",
-        tasks_body_param: "task-body-#{task.id}"
+        tasks_backdrop_param: "edit-task-backdrop"
       } %>
-      <%= button_to "Delete", [category, task], class:"btn btn-outline-danger fs-7", method: :delete %>
+      <%= button_to "Delete", [category, task], class:"btn btn-outline-danger fs-7 ms-2", method: :delete %>
     </div>
   </div>
 
@@ -32,7 +32,14 @@
     <% end %>
   </p>
   
-  <div id="edit-form-<%= task.id %>" class="d-none task-edit-form">
-    <%= render 'tasks/form', category: @category, task: task, button_label: "Update" %>
+  <div id="edit-form-<%= task.id %>" class="d-none edit-task-form p-4 task-form">
+    <%= render 'tasks/form', category: @category, task: task, button_label: "Confirm", form_label: task.title.capitalize %>
   </div>
+  <%= link_to "", nil, remote: true, class: "d-none task-backdrop", id: "edit-task-backdrop",
+  data: {
+    controller: "tasks",
+    action: "tasks#hideEditForm",
+    tasks_form_param: "edit-task-form",
+    tasks_backdrop_param: "edit-task-backdrop"
+  } %>
 </div>

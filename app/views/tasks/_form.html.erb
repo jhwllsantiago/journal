@@ -1,5 +1,6 @@
 <%= form_with(model: [category, task]) do |f| %>
   <div class="container">
+    <h4 class="text-center"><%= form_label %></h4>
 
     <div>
       <%= f.label :title, class: "form-label" %>
@@ -12,6 +13,6 @@
   
     <%= f.rich_text_area :body %>
 
-    <%= f.submit button_label, class: "btn btn-outline-primary mt-1" %>
+    <%= f.submit button_label, class: "btn btn-outline-primary mt-3 w-25 float-end" %>
   </div>
 <% end %>
