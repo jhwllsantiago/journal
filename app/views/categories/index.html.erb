@@ -2,10 +2,10 @@
   <h2 class="text-center mt-1">Categories</h2>
   <div id="categories" class="grid mt-4">
     <% @categories.each do |category| %>
-      <%= link_to render(category), category, class: "card category-card" %>
+      <%= link_to render(category), category, class: "card category-card border-dark text-bg-light" %>
     <% end %>
     <% (8 - @categories.count).times do %>
-      <%= link_to "Add Category", new_category_path, class: "card new-category-card fst-italic fs-5" %>
+      <%= link_to "Add Category", new_category_path, class: "card new-category-card fst-italic fs-5 text-bg-light" %>
     <% end %>
   </div>
 </div>
