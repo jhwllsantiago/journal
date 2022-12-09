@@ -1,7 +1,7 @@
 <div class="container container-400 mt-5">
   <h2 class="mb-5 mt-3 text-center">Login to <span class=" fst-italic">Journally</span></h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
     <div class="form-floating mb-3">
       <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@example.com" %>
       <%= f.label :email %>
