@@ -3,7 +3,13 @@
 one:
   category: one
   user: one
+  title: titleone
+  completed: false
+  deadline: "2022-12-30"
 
 two:
   category: two
   user: two
+  title: titletwo
+  completed: true
+  deadline: "2022-12-31"
