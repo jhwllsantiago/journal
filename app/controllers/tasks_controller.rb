@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     @task.user = current_user
 
     if @task.save
-      redirect_to category_path(@category), notice: "#{@task.title.capitalize} has been added to #{@category.name.upcase}."
+      redirect_to category_path(@category), notice: "#{@task.title.capitalize} has been added."
     else
       redirect_to category_path(@category), alert: "An error occured. #{@task.title.capitalize} was not added."
     end

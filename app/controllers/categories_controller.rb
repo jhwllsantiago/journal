@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to categories_url, notice: "#{@category.name.upcase} has been category added." }
+        format.html { redirect_to categories_url, notice: "#{@category.name.upcase} has been added." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to category_url(@category), notice: "#{@category.name.upcase} has been category updated." }
+        format.html { redirect_to category_url(@category), notice: "#{@category.name.upcase} has been updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
