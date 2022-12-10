@@ -1,5 +1,28 @@
-<div class="container" style="width: 20rem; text-align: justify;">
-  <h1 class="text-center my-3">Landing Page</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, magni voluptates iure molestiae obcaecati adipisci doloremque dolores reiciendis corrupti. Aliquam, quis minima sed similique ipsum in neque tenetur mollitia voluptatem.</p>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore magni aperiam suscipit facilis magnam dicta quam consequuntur libero expedita tenetur, doloribus vitae voluptatibus beatae quisquam omnis, at sed iste aut.</p>
+<div class="container" style="max-width: 1000px;">
+  <h1 class="text-center mt-5 fst-italic fst-bold">Journally</h1>
+  <div class="row mt-5">
+    <div class="col card m-3 text-bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">Sign In</h5>
+        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, minima officia quis corrupti nesciunt architecto, velit cumque eos corporis id vitae debitis quidem fuga laborum illo nobis exercitationem eligendi necessitatibus.</p>
+        <%= link_to "Sign In", new_user_session_path, class:'btn btn-outline-primary'%>
+      </div>
+    </div>
+    <div class="col card m-3 text-bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">Sign Up</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam repudiandae quos eveniet optio animi facilis, nostrum beatae modi in nulla culpa iste labore consectetur. Magni dolore unde quas hic incidunt.</p>
+        <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-outline-success" %>
+      </div>
+    </div>
+    <div class="col card m-3 text-bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">About</h5>
+        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi animi iusto, fuga fugiat ipsam quo consequuntur asperiores deleniti quam ipsa sapiente nihil accusantium dignissimos exercitationem facilis fugit ullam perspiciatis voluptates!</p>
+        <%= link_to "About", about_path, class:"btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+  </div>
 </div>
